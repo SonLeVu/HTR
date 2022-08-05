@@ -8,11 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primary_color_yellow_dark">#FFEAB107</color>
+    <color name="primary_color_red_dark">#FFC72B1F</color>
     <color name="secondary_color_navy_dark">#FF03648C</color>
     <color name="tertiary_color_navy_dark">#FF0D7A11</color>
 
-    <color name="primary_color_yellow">#FFF8C11C</color>
+    <color name="primary_color_red">#FFF44336</color>
     <color name="secondary_color_navy">#FF0595CF</color>
     <color name="tertiary_color_navy">#FF10CF18</color>
 </resources>

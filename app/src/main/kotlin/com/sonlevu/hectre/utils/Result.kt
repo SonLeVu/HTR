@@ -1,4 +1,4 @@
-
+package com.sonlevu.hectre.utils
 import androidx.annotation.StringRes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Hectre</string>
 
-    <string name="menu_transform">Transform</string>
-    <string name="menu_reflow">Reflow</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_settings">Settings</string>
-    <string name="common_error_message">An error has occured</string>
+    <string name="title_des_timesheets">TimeSheets</string>
+    <string name="title_des_harvest">Harvest</string>
+    <string name="title_des_payroll">Payroll</string>
+    <string name="title_des_maps">Maps</string>
+    <string name="title_des_insights">Insights</string>
+    <string name="title_des_scout">Scout</string>
+    <string name="title_des_admin">Admin</string>
+    <string name="title_des_rate_n_vol"><![CDATA[Update Rate & Volume]]></string>
+    <string name="common_error_message">An error has occurred.</string>
 </resources>

@@ -1,4 +1,4 @@
-
+package com.sonlevu.hectre.utils
 import androidx.annotation.StringRes
 import com.sonlevu.hectre.R
 

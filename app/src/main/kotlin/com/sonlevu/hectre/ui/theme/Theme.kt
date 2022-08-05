@@ -9,22 +9,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = PrimaryColorYellowDark,
+    primary = PrimaryColorRedDark,
     secondary = SecondaryColorNavyDark,
     tertiary = TertiaryColorNavyDark,
     onPrimary = Color.White,
-    secondaryContainer = PrimaryColorYellowDark.copy(alpha = 0.5f),
-    surfaceVariant = PrimaryColorYellow.copy(alpha = 0.1f),
+    secondaryContainer = PrimaryColorRedDark.copy(alpha = 0.5f),
+    surfaceVariant = PrimaryColorRed.copy(alpha = 0.1f),
     background = darkBackground,
     surface = darkBackground
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = PrimaryColorYellow,
+    primary = PrimaryColorRed,
     secondary = SecondaryColorNavy,
     tertiary = TertiaryColorNavy,
-    secondaryContainer = PrimaryColorYellowDark.copy(alpha = 0.5f),
-    surfaceVariant = PrimaryColorYellow.copy(alpha = 0.1f),
+    secondaryContainer = PrimaryColorRedDark.copy(alpha = 0.5f),
+    surfaceVariant = PrimaryColorRed.copy(alpha = 0.1f),
     background = lightBackground,
     surface = lightBackground
 

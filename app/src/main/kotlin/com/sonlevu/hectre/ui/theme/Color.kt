@@ -11,9 +11,9 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 /**
- * From xml theme color: primary_color_yellow_dark
+ * From xml theme color: primary_color_red_dark
  */
-val PrimaryColorYellowDark = Color(0xFFEAB107)
+val PrimaryColorRedDark = Color(0xFFC72B1F)
 
 /**
  * From xml theme color: secondary_color_navy_dark
@@ -27,9 +27,9 @@ val TertiaryColorNavyDark = Color(0xFF0D7A11)
 
 
 /**
- * From xml theme color: primary_color_yellow
+ * From xml theme color: primary_color_red
  */
-val PrimaryColorYellow = Color(0xFFF8C11C)
+val PrimaryColorRed = Color(0xFFF44336)
 
 /**
  * From xml theme color: secondary_color_navy
