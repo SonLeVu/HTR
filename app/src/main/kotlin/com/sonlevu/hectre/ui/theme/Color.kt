@@ -44,7 +44,7 @@ val TertiaryColorNavy = Color(0xFF10CF18)
 /**
  * From xml theme color: card_title_background
  */
-val CardTitleBackgroundColor = Color(0xFFEFD37F)
+val CardTitleBackgroundColor = Color(0xFFF1E3B8)
 
 val darkBackground = Color(red = 27, green = 31, blue = 29)
 val lightBackground = Color(red = 251, green = 255, blue = 253)

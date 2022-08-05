@@ -1,17 +1,14 @@
 package com.sonlevu.hectre.ui.drawer
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.sonlevu.hectre.data.repo.OrchardRepository
 import com.sonlevu.hectre.domain.repo.IOrchardRepository
 import com.sonlevu.hectre.ui.screens.*
-import kotlinx.coroutines.launch
+import com.sonlevu.hectre.ui.screens.updateratenvol.UpRateNVolScreen
 
 @Composable
 fun HectreNavHost(

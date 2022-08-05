@@ -13,7 +13,7 @@ suspend fun <T> withIO(block: suspend CoroutineScope.() -> T): T = withContext(D
 class OrchardRepository: IOrchardRepository {
     override suspend fun getJobListInOrchard(orchardId: String) : OrchardJobResponse = withIO {
         // Do some request with retrofit 2 for example
-        delay(1000)
+        delay(10)
         return@withIO FakeData().fakeAsyncRequest()
     }
 }

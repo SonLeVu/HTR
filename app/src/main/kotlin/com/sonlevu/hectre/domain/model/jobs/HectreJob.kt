@@ -1,4 +1,9 @@
 package com.sonlevu.hectre.domain.model.jobs
 
-data class HectreJob (val name: String,
-                      val jobType: JobType)
+import com.sonlevu.hectre.domain.model.users.Staff
+
+data class HectreJob(
+    val name: String,
+    val jobType: JobType,
+    val staffList: ArrayList<Staff>
+)

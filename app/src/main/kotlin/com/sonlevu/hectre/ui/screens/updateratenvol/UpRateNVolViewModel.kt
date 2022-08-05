@@ -1,9 +1,10 @@
-package com.sonlevu.hectre.ui.screens
+package com.sonlevu.hectre.ui.screens.updateratenvol
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sonlevu.hectre.R
 import com.sonlevu.hectre.data.api.OrchardJobResponse
+import com.sonlevu.hectre.domain.debugging.FakeData
 import com.sonlevu.hectre.domain.repo.IOrchardRepository
 import com.sonlevu.hectre.utils.ErrorResult
 import com.sonlevu.hectre.utils.MutableResultFlow
@@ -19,32 +20,23 @@ class UpRateNVolViewModel(
     private var orchardID: String
     private var orchardRepository: IOrchardRepository
     private var showMessage: (Int) -> Unit
-    val dataFetchingResult = MutableResultFlow<OrchardJobResponse>()
+    var dataFetchingResult = MutableResultFlow<OrchardJobResponse>()
 
     init {
         this.orchardID = orchardID
         this.orchardRepository = orchardRepository
         this.showMessage = showMessage
-        this.refresh()
+        this.dataFetchingResult = MutableResultFlow(value = SuccessResult(data = FakeData().fakeAsyncRequest()))
     }
 
     fun refresh() = viewModelScope.launch {
         dataFetchingResult.loadOrError(R.string.common_error_message) {
             orchardRepository.getJobListInOrchard(orchardID)
         }
-        dataFetchingResult.also {
-            when (it) {
-                is ErrorResult<*> -> showMessage(it.message!!)
-                is SuccessResult<*> -> {
-                    updateData()
-                }
-                else -> {}
-            }
-        }
     }
 
-    private fun updateData() {
-        showMessage(R.string.common_success_message)
+    fun updateData() {
+
     }
 
     fun onOpen() {
