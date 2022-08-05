@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sonlevu.hectre.R
 import com.sonlevu.hectre.data.api.OrchardJobResponse
-import com.sonlevu.hectre.data.repo.OrchardRepository
 import com.sonlevu.hectre.domain.repo.IOrchardRepository
 import com.sonlevu.hectre.utils.ErrorResult
 import com.sonlevu.hectre.utils.MutableResultFlow
@@ -20,7 +19,7 @@ class UpRateNVolViewModel(
     private var orchardID: String
     private var orchardRepository: IOrchardRepository
     private var showMessage: (Int) -> Unit
-    val loginResult = MutableResultFlow<OrchardJobResponse>()
+    val dataFetchingResult = MutableResultFlow<OrchardJobResponse>()
 
     init {
         this.orchardID = orchardID
@@ -30,10 +29,10 @@ class UpRateNVolViewModel(
     }
 
     fun refresh() = viewModelScope.launch {
-        loginResult.loadOrError(R.string.common_error_message) {
+        dataFetchingResult.loadOrError(R.string.common_error_message) {
             orchardRepository.getJobListInOrchard(orchardID)
         }
-        loginResult.also {
+        dataFetchingResult.also {
             when (it) {
                 is ErrorResult<*> -> showMessage(it.message!!)
                 is SuccessResult<*> -> {
@@ -44,8 +43,8 @@ class UpRateNVolViewModel(
         }
     }
 
-    fun updateData() {
-
+    private fun updateData() {
+        showMessage(R.string.common_success_message)
     }
 
     fun onOpen() {

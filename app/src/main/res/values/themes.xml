@@ -8,21 +8,4 @@
         <item name="colorPrimaryVariant">@color/primary_color_red_dark</item>
     </style>
 
-    <style name="DatePicker" parent="ThemeOverlay.Material3.MaterialCalendar">
-        <item name="materialCalendarHeaderTitle">@style/DatePicker.Title</item>
-    </style>
-
-    <style name="DatePicker.Title" parent="Widget.Material3.MaterialCalendar.HeaderTitle">
-        <item name="android:textAppearance">@style/TextAppearance.Material3.TitleMedium</item>
-        <item name="autoSizeTextType">none</item>
-    </style>
-
-    <style name="Theme.Hectre.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.Hectre.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.Hectre.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

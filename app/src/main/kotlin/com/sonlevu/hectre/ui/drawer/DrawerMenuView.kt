@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -110,7 +111,12 @@ fun DrawerView(currentScreen: HectreDestination, onItemClicked: (HectreDestinati
 fun TopBarView(scope: CoroutineScope, scaffoldState: ScaffoldState, @StringRes titleID: Int) {
     TopAppBar(
         title = {
-            Text(text = stringResource(id = titleID))
+            Text(
+                text = stringResource(id = titleID),
+                color = Color.White,
+                style = MaterialTheme.typography.titleLarge,
+                textAlign = TextAlign.Center
+            )
         },
         modifier = Modifier.padding(top = 24.dp),
         backgroundColor = PrimaryColorRed,
@@ -123,7 +129,8 @@ fun TopBarView(scope: CoroutineScope, scaffoldState: ScaffoldState, @StringRes t
                 },
             ) {
                 androidx.compose.material3.Icon(
-                    Icons.Rounded.Menu,
+                    imageVector = Icons.Rounded.Menu,
+                    tint = Color.White,
                     contentDescription = ""
                 )
             }
