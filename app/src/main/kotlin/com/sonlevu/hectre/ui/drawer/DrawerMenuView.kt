@@ -24,6 +24,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.google.accompanist.insets.navigationBarsPadding
 import com.sonlevu.hectre.R
 import com.sonlevu.hectre.ui.theme.PrimaryColorRed
@@ -54,47 +56,51 @@ fun MenuHeader(
 
 
 @Composable
-fun MenuDrawerItemView(title: String, selected: Boolean, icon: ImageVector) {
+fun MenuDrawerItemView(
+    destination: HectreDestination,
+    selected: Boolean,
+    navigateTo: (HectreDestination) -> Unit
+) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .clickable {}
+            .clickable { navigateTo(destination) }
             .padding(horizontal = 16.dp, vertical = 12.dp),
     ) {
-
         Icon(
-            imageVector = icon,
+            imageVector = destination.icon,
             modifier = Modifier.padding(end = 20.dp),
-            contentDescription = title,
+            contentDescription = stringResource(id = destination.title),
             tint = if (selected) PrimaryColorRed else PrimaryColorRed.copy(alpha = .6f)
         )
-        if (title.isNotEmpty()) {
-            if (selected)
-                Text(
-                    text = title,
-                    modifier = Modifier.weight(1f),
-                    color = Color.Black,
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp,
-                        color = Color.Black
-                    )
+        if (selected)
+            Text(
+                text = stringResource(id = destination.title),
+                modifier = Modifier.weight(1f),
+                color = Color.Black,
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp,
+                    color = Color.Black
                 )
-            else
-                Text(text = title, modifier = Modifier.weight(1f), fontSize = 12.sp)
-        }
-
+            )
+        else
+            Text(
+                text = stringResource(id = destination.title),
+                modifier = Modifier.weight(1f),
+                fontSize = 12.sp
+            )
     }
 }
 
 @Composable
-fun DrawerView(currentScreen : HectreDestination) {
+fun DrawerView(currentScreen: HectreDestination, onItemClicked: (HectreDestination) -> Unit) {
     LazyColumn(modifier = Modifier.padding(top = 24.dp)) {
         items(drawerMenu.size) { index ->
             MenuDrawerItemView(
-                title = stringResource(id = drawerMenu[index].title),
                 selected = drawerMenu[index].route == currentScreen.route,
-                icon = drawerMenu[index].icon
+                destination = drawerMenu[index],
+                navigateTo = onItemClicked
             )
         }
     }

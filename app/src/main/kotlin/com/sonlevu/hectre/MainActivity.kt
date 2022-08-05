@@ -102,8 +102,17 @@ class MainActivity : ComponentActivity() {
                             }
 
                         },
-                        drawerGesturesEnabled = currentBackStack?.destination?.route?.contains(UpdateRateAndVolume.route) == false,
-                        drawerContent = { DrawerView(currentScreen) },
+                        drawerGesturesEnabled = currentBackStack?.destination?.route?.contains(
+                            UpdateRateAndVolume.route
+                        ) == false,
+                        drawerContent = {
+                            DrawerView(
+                                currentScreen = currentScreen,
+                                onItemClicked = {
+                                    navController.navigateSingleTopTo(it.route)
+                                    scope.launch { scaffoldState.drawerState.close() }
+                                })
+                        },
                         bottomBar = {},
                         content = {
                             HectreNavHost(
@@ -125,6 +134,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     HectreTheme {
-        DrawerView(TimeSheets)
+        DrawerView(TimeSheets) {}
     }
 }
