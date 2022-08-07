@@ -17,9 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.sonlevu.hectre.domain.model.jobs.HectreJob
 import com.sonlevu.hectre.ui.screens.AvatarFromName
@@ -27,13 +24,14 @@ import com.sonlevu.hectre.ui.screens.HyperlinkText
 import com.sonlevu.hectre.ui.screens.OrchardRow
 import com.sonlevu.hectre.ui.theme.CardTitleBackgroundColor
 import com.sonlevu.hectre.ui.theme.PrimaryColorRed
+import com.sonlevu.hectre.ui.theme.Purple80
 
 @Composable
 fun JobItem(modifier: Modifier, hectreJob: HectreJob) {
     ElevatedCard(
         modifier = modifier.padding(horizontal = 16.dp, vertical = 4.dp),
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 3.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+        colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Row(
             modifier = Modifier
@@ -45,11 +43,11 @@ fun JobItem(modifier: Modifier, hectreJob: HectreJob) {
             Text(
                 modifier = Modifier.padding(start = 10.dp),
                 text = "Pruning",
-                style = MaterialTheme.typography.headlineSmall,
+                style = MaterialTheme.typography.titleLarge,
                 color = Color.Black,
             )
             OutlinedButton(
-                modifier = Modifier.padding(end = 10.dp),
+                modifier = Modifier.padding(end = 16.dp),
                 border = BorderStroke(1.dp, PrimaryColorRed),
                 contentPadding = PaddingValues(horizontal = 10.dp),
                 colors = ButtonDefaults.outlinedButtonColors(
@@ -63,7 +61,8 @@ fun JobItem(modifier: Modifier, hectreJob: HectreJob) {
             ) {
                 Text(
                     "ADD MAX TREES",
-                    color = PrimaryColorRed
+                    color = PrimaryColorRed,
+                    style = MaterialTheme.typography.labelSmall
                 )
             }
         }
@@ -72,25 +71,8 @@ fun JobItem(modifier: Modifier, hectreJob: HectreJob) {
                 .fillMaxWidth()
                 .padding(20.dp)
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                AvatarFromName(
-                    name = "Henry"
-                )
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(horizontal = 12.dp, vertical = 4.dp),
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Text(
-                        text = "Henry",
-                        style = MaterialTheme.typography.labelLarge
-                    )
-                }
-            }
+            AvatarFromName(name = "Henry", backgroundColor = Purple80, size = 50.dp)
+            Spacer(modifier = Modifier.size(8.dp))
             HyperlinkText(
                 modifier = Modifier,
                 fullText = "Orchard   Benji(V1032F)",
@@ -157,7 +139,7 @@ fun JobItem(modifier: Modifier, hectreJob: HectreJob) {
                     text = "Canker Removal (Job Name) will be paid by wages in this timesheet.",
                     style = MaterialTheme.typography.labelLarge,
                     color = PrimaryColorRed,
-                    modifier = Modifier.padding(top = 8.dp),
+                    modifier = Modifier.padding(top = 2.dp),
                 )
             }
 

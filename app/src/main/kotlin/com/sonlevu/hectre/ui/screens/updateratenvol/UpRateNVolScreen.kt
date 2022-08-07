@@ -1,7 +1,7 @@
 package com.sonlevu.hectre.ui.screens.updateratenvol
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import android.widget.Space
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.material3.Button
@@ -13,6 +13,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.sonlevu.hectre.R
@@ -53,16 +54,22 @@ fun UpRateNVolScreen(
             state = rememberSwipeRefreshState(!(dataFetchingResult is LoadingResult || dataFetchingResult is SuccessResult)),
             onRefresh = { viewModel.refresh() },
         ) {
-            dataFetchingResult.data?.let {
-                LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                    items(it.hectreJobList.count()) { index ->
-                        JobItem(
-                            modifier = Modifier,
-                            hectreJob = it.hectreJobList[index]
-                        )
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Spacer(modifier = Modifier.size(16.dp))
+                dataFetchingResult.data?.let {
+                    LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                        items(it.hectreJobList.count()) { index ->
+                            JobItem(
+                                modifier = Modifier,
+                                hectreJob = it.hectreJobList[index]
+                            )
+                        }
                     }
                 }
+                Spacer(modifier = Modifier.size(42.dp))
             }
+
+
 
         }
     }

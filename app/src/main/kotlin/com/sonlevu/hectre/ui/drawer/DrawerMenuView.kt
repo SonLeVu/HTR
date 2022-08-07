@@ -18,17 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.google.accompanist.insets.navigationBarsPadding
-import com.sonlevu.hectre.R
 import com.sonlevu.hectre.ui.theme.PrimaryColorRed
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -107,9 +103,10 @@ fun DrawerView(currentScreen: HectreDestination, onItemClicked: (HectreDestinati
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBarView(scope: CoroutineScope, scaffoldState: ScaffoldState, @StringRes titleID: Int) {
-    TopAppBar(
+    CenterAlignedTopAppBar(
         title = {
             Text(
                 text = stringResource(id = titleID),
@@ -119,7 +116,7 @@ fun TopBarView(scope: CoroutineScope, scaffoldState: ScaffoldState, @StringRes t
             )
         },
         modifier = Modifier.padding(top = 24.dp),
-        backgroundColor = PrimaryColorRed,
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = PrimaryColorRed),
         navigationIcon = {
             IconButton(
                 onClick = {

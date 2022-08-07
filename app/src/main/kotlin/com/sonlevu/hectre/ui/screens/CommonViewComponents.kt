@@ -2,9 +2,7 @@ package com.sonlevu.hectre.ui.screens
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
@@ -12,9 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,17 +24,19 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.constraintlayout.compose.Dimension
 import androidx.constraintlayout.compose.Dimension.Companion.fillToConstraints
 import com.sonlevu.hectre.ui.theme.PrimaryColorRed
 import com.sonlevu.hectre.ui.theme.Purple40
+import com.sonlevu.hectre.ui.theme.Purple80
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBarViewWithBack(navigateBack: () -> Unit, @StringRes idString: Int) {
-    TopAppBar(
+    CenterAlignedTopAppBar(
         title = {
             Text(
                 text = stringResource(id = idString),
@@ -48,7 +46,7 @@ fun TopBarViewWithBack(navigateBack: () -> Unit, @StringRes idString: Int) {
             )
         },
         modifier = Modifier.padding(top = 24.dp),
-        backgroundColor = PrimaryColorRed,
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = PrimaryColorRed),
         navigationIcon = {
             IconButton(
                 onClick = navigateBack,
@@ -63,20 +61,37 @@ fun TopBarViewWithBack(navigateBack: () -> Unit, @StringRes idString: Int) {
 }
 
 @Composable
-fun AvatarFromName(name: String) {
-    Box(
-        modifier = Modifier
-            .size(30.dp)
-            .padding(3.dp)
-            .background(shape = CircleShape, color = Purple40),
-        contentAlignment = Alignment.Center
+fun AvatarFromName(name: String, backgroundColor: Color, size: Dp) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = name[0].toString(),
-            color = Color.White,
-            style = MaterialTheme.typography.labelMedium
-        )
+        Box(
+            modifier = Modifier
+                .size(size)
+                .padding(3.dp)
+                .background(shape = CircleShape, color = backgroundColor),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = name[0].toString(),
+                color = Color.White,
+                style = MaterialTheme.typography.headlineMedium
+            )
+        }
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 12.dp, vertical = 4.dp),
+            verticalArrangement = Arrangement.Center
+        ) {
+            androidx.compose.material3.Text(
+                text = name,
+                style = MaterialTheme.typography.titleLarge
+            )
+        }
     }
+
 }
 
 @Composable
@@ -139,7 +154,7 @@ fun HyperlinkText(
 
 @Composable
 fun OrchardRow(text: String, isPartiallyDone: Boolean = false, isAssigned: Boolean = true) {
-    ConstraintLayout(Modifier.size(24.dp)) {
+    ConstraintLayout(Modifier.size(34.dp)) {
         val (row, dot) = createRefs()
         Box(
             modifier = Modifier
@@ -159,13 +174,13 @@ fun OrchardRow(text: String, isPartiallyDone: Boolean = false, isAssigned: Boole
         if (isPartiallyDone) {
             Box(
                 modifier = Modifier
-                    .background(Color.Yellow)
+                    .background(Color.Yellow, shape = CircleShape)
                     .size(5.dp)
-                    .clip(shape = CircleShape)
                     .constrainAs(dot) {
                         top.linkTo(parent.top, margin = 2.dp)
                         end.linkTo(parent.end, margin = 2.dp)
-                    }
+                    },
+
             )
         }
     }

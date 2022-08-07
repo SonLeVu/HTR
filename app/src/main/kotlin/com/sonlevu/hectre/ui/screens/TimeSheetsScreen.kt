@@ -15,7 +15,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sonlevu.hectre.domain.model.field.Orchard
-import com.sonlevu.hectre.ui.drawer.drawerMenu
 
 val allAvailableOrchard = listOf(
     Orchard(id = "V1394J", name = "Winterfell", areaAcre = 101f),
